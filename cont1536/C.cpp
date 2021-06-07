@@ -23,35 +23,27 @@ typedef map<int, int> mii;
 typedef vector<vi> vvi;
 typedef vector<pii> vpii;
 
-// 2-pointer method
-
 void solve(){
 	int n;
-	cin>>n;
-	vector<int> a(n);
-	REPN(i, n) cin>>a[i];
-	sort(a.begin(), a.end());
-	int ans = 0;
-	int i = 0, j = 0;
-	while (j < n){
-		if (a[i] < a[j]){
-			i++;
-			j++;
-			ans++;
-		}
-		else if (a[i] == a[j]){
-			j++;
-		}
+	cin >> n;
+	// cout << __gcd(n, 0) << "\n";
+	string s;cin >> s;
+	map<pair<int, int>, int> m;
+	int d = 0, k = 0;
+	for (int i = 0; i < n; ++i){
+		if (s[i] == 'D') d++;
+		else k++;
+		int g = __gcd(d, k);
+		cout << ++m[{d/g, k/g}] << " ";
 	}
-
-	cout << ans << endl;
+	cout << "\n";
 }
 
 int main(int argc, char const *argv[])
 {
     fastio;
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while(t--){
     	solve();
     }
