@@ -23,18 +23,41 @@ typedef map<int, int> mii;
 typedef vector<vi> vvi;
 typedef vector<pii> vpii;
 
-
 void print(string s, auto x){cout << s << " : " << x << endl;}
 
 void solve(){
-	
+	int n, k;
+	cin >> n >> k;
+	string s, s1;
+	cin >> s;
+	// s1 = s;
+	int i = 1;
+	int curr = 0;
+	int pos = 0;
+	int x = 0;
+	while(i < n){
+		// print("curr", curr);
+		// print("x", x);
+		if (s[i] > s[curr]) break;
+		else if (s[i] < s[curr]){
+			curr = 0;
+			x = i;
+		}
+		else{
+			curr++;
+		}
+		i++;
+	}
+	x++;
+	for (int j = 0; j < k; j++) cout << s[j % x];
+	cout << endl;
 }
 
 int main(int argc, char const *argv[])
 {
     fastio;
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while(t--){
     	solve();
     }

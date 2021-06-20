@@ -23,18 +23,50 @@ typedef map<int, int> mii;
 typedef vector<vi> vvi;
 typedef vector<pii> vpii;
 
+#define int long long
 
 void print(string s, auto x){cout << s << " : " << x << endl;}
 
 void solve(){
-	
+	int n, k, x;
+	cin >> n >> k >> x;
+	vector<int> v(n);
+	REPN(i, n) cin >> v[i];
+	sort(v.begin(), v.end());
+	int groups = 1;
+	vector<int> v1;
+	for(int i = 1; i < n; i++){
+		if (v[i] - v[i - 1] > x){
+			v1.push_back(v[i] - v[i - 1]);
+		}
+	}
+	sort(v1.begin(), v1.end());
+	// print("k", k);
+	// print("x", x);
+	// cout << "v1 : ";
+	// for (auto h : v1) cout << h << " ";
+	// cout << endl;
+	int v1_siz = v1.size();
+	int ans = v1_siz + 1;
+	// cout << "mem:";
+	for (int i = 0; i < v1_siz and k; i++){
+		int mem = v1[i] / x;
+		if (v1[i] % x == 0) mem--;
+		if (k >= mem){
+			ans--;
+			k -= mem;
+		}
+		else break;
+	}
+	// cout << endl;
+	cout << ans << endl;
 }
 
-int main(int argc, char const *argv[])
+signed main(int argc, char const *argv[])
 {
     fastio;
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while(t--){
     	solve();
     }

@@ -23,18 +23,42 @@ typedef map<int, int> mii;
 typedef vector<vi> vvi;
 typedef vector<pii> vpii;
 
-
-void print(string s, auto x){cout << s << " : " << x << endl;}
-
 void solve(){
-	
+	int n;
+	cin >> n;
+	string a, b;
+	cin >> a >> b;
+	int prev = -1;
+	int ans = 0;
+	if (a[0] != b[0]) prev = 0;
+	REP(i, 1, n - 1){
+		// cout << " i : " << i << " , prev - " << prev << endl;
+		if (a[i] != b[i]){
+			if (prev == i - 1 and a[i] != a[i - 1]){
+				ans++;
+				prev = -1;
+			}
+			else if (prev == i - 1 and a[i] == a[i - 1]){
+				ans++;
+				prev = i;
+			}
+			else prev = i;
+		}
+		else{
+			if (prev != -1) ans++;
+			prev = -1;
+		}
+	}
+	// cout << " i : " << n - 1 << " , prev - " << prev << endl;
+	if (prev != -1) ans++;
+	cout << ans << endl;
 }
 
 int main(int argc, char const *argv[])
 {
     fastio;
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while(t--){
     	solve();
     }

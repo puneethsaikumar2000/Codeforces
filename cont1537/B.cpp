@@ -23,11 +23,20 @@ typedef map<int, int> mii;
 typedef vector<vi> vvi;
 typedef vector<pii> vpii;
 
-
-void print(string s, auto x){cout << s << " : " << x << endl;}
-
 void solve(){
-	
+	int n, m, i, j;
+	cin >> n >> m >> i >> j;
+	pii p[4] = {{1, 1}, {n, 1}, {1, m}, {n, m}};
+	int id = -1;
+	int dist = 0;
+	for (int i = 0; i < 4; i++){
+		if (dist < abs(p[i].ff - i) + abs(p[i].ss - j)){
+			dist = abs(p[i].ff - i) + abs(p[i].ss - j);
+			id = i;
+		}
+	}
+	cout << p[id].ff << " " << p[id].ss << " ";
+	cout << p[3 - id].ff << " " << p[3 - id].ss << endl;
 }
 
 int main(int argc, char const *argv[])

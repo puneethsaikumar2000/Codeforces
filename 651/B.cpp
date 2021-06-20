@@ -23,18 +23,42 @@ typedef map<int, int> mii;
 typedef vector<vi> vvi;
 typedef vector<pii> vpii;
 
-
-void print(string s, auto x){cout << s << " : " << x << endl;}
-
 void solve(){
-	
+	int n;
+	cin >> n;
+	vi a(n);
+	REPN(i, n) cin >> a[i];
+	sort(a.begin(), a.end());
+	int ans = 0;
+	map<int, int> m;
+	int cnt = 1;
+	int maxcnt = 1;
+	for(int i = 1; i < n; ++i){
+		if (a[i] > a[i - 1]){
+			m[cnt]++;
+			maxcnt = max(maxcnt, cnt);
+			cnt = 1;
+		}
+		else cnt++;
+	}
+	m[cnt]++;
+	maxcnt = max(maxcnt, cnt);
+	if (maxcnt == n){
+		cout << 0 << "\n";
+		return;
+	}
+	for (int i = 1; i <= maxcnt; ++i){
+		// if (m[i] > 1)
+		ans += (m[i] * i) - 1;
+	}
+	cout << ans << endl;
 }
 
 int main(int argc, char const *argv[])
 {
     fastio;
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while(t--){
     	solve();
     }

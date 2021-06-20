@@ -23,11 +23,24 @@ typedef map<int, int> mii;
 typedef vector<vi> vvi;
 typedef vector<pii> vpii;
 
-
-void print(string s, auto x){cout << s << " : " << x << endl;}
-
 void solve(){
-	
+	int n;
+	cin >> n;
+	vi a(n);
+	int sum = 0;
+	REPN(i, n){
+		cin >> a[i];
+		sum += a[i];
+	}
+	if (sum == n){
+		cout << 0 << endl;
+	}
+	else if (sum < n){
+		cout << 1 << endl;
+	}
+	else{
+		cout << sum - n << endl;
+	}
 }
 
 int main(int argc, char const *argv[])

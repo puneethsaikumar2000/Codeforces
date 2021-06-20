@@ -23,11 +23,23 @@ typedef map<int, int> mii;
 typedef vector<vi> vvi;
 typedef vector<pii> vpii;
 
-
-void print(string s, auto x){cout << s << " : " << x << endl;}
-
 void solve(){
-	
+	string s;
+	cin >> s;
+	int n = s.length();
+	int ans = 0;
+	int boo[n] = {false};
+	REP(i, 1, n - 1){
+		if (s[i] == s[i - 1] and !boo[i - 1]){
+			ans++;
+			boo[i] = true;
+		}
+		else if (i > 1 && s[i] == s[i-2] && !boo[i-2]){
+			ans++;
+			boo[i] = true;
+		}
+	}
+	cout << ans << endl;
 }
 
 int main(int argc, char const *argv[])

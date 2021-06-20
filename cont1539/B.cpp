@@ -27,14 +27,37 @@ typedef vector<pii> vpii;
 void print(string s, auto x){cout << s << " : " << x << endl;}
 
 void solve(){
-	
+	int n, q;
+	cin >> n >> q;
+	string s;
+	cin >> s;
+	int cnt[26][n + 1];
+	for (int i = 0; i < 26; i++){
+		cnt[i][0] = 0;
+	}
+	for(int i = 1; i <= n; i++){
+		for (int j = 0; j < 26; j++){
+			if (j == s[i - 1] - 'a') cnt[j][i] = cnt[j][i - 1] + 1;
+			else cnt[j][i] = cnt[j][i - 1];
+		}
+	}
+	REPN(z, q){
+		int l, r;
+		cin >> l >> r;
+		l--;
+		int ans = 0;
+		for (int i = 0; i < 26; i++){
+			ans += (cnt[i][r] - cnt[i][l])*(i + 1);
+		}
+		cout << ans << endl;
+	}
 }
 
 int main(int argc, char const *argv[])
 {
     fastio;
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while(t--){
     	solve();
     }

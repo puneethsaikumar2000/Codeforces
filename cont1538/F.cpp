@@ -23,36 +23,27 @@ typedef map<int, int> mii;
 typedef vector<vi> vvi;
 typedef vector<pii> vpii;
 
-const int N = 1e9;
-
-lli func[N + 1];
 
 lli f(lli x){
 	lli ans = 0;
-	while(x % 10 == 9){
-		ans++;
+	while(x){
+		ans += x;
 		x /= 10;
 	}
-	ans++;
+	// ans++;
 	return ans;
 }
 
 void solve(){
 	int l, r;
 	cin >> l >> r;
-	cout << func[r] - func[l] << "\n";
+	cout << f(r) - f(l) << "\n";
 }
 
 int main(int argc, char const *argv[])
 {
     fastio;
     int t = 1;
-    func[1] = 0;
-    func[2] = 1;
-    for(int i = 3; i < N; i++){
-    	func[i] = func[i - 1] + f(i - 1);
-    	// cout << "i : " << i << endl << flush;
-    }
     cin >> t;
     while(t--){
     	solve();

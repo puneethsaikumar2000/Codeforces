@@ -23,14 +23,23 @@ typedef map<int, int> mii;
 typedef vector<vi> vvi;
 typedef vector<pii> vpii;
 
+#define int long long
 
 void print(string s, auto x){cout << s << " : " << x << endl;}
 
 void solve(){
-	
+	int n, x, t;
+	cin >> n >> x >> t;
+	int k = t / x;
+	if (n < k + 1){
+		cout << (long long)((n)*(n - 1)) / 2 << endl;
+	}	
+	else{
+		cout << (long long)((n - k - 1) * k) + (k*(k + 1) / 2) << endl;
+	}
 }
 
-int main(int argc, char const *argv[])
+signed main(int argc, char const *argv[])
 {
     fastio;
     int t = 1;
